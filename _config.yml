@@ -100,6 +100,7 @@ theme: hipaper
 deploy:
   type: git
   repo: https://ab9d6ab0f5511edb163ef4fa5015a658e0277042@github.com/shuaiutopia/note_blog.git
+  branch: gh-pages
   token: ab9d6ab0f5511edb163ef4fa5015a658e0277042
   name: shuaiutopia
   email: sss0513.love@163.com
