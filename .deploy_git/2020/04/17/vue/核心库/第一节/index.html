@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>vue-第一节 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="vue核心库配置文件" />
+  
+  
+  
+  
+  <meta name="description" content="这是 vue 的第一节课程, 我们来看看它的配置文件  改造 vue_cli3+ 的 js 版本支持 ts 生成vue项目的vue_cli版本为 4.0.5  应用场景:   * 目前已经在开发的项目, 后续想要摸摸 ts  * 刚开始学习 ts, 不敢完全入坑  安装 1 2 3 4 5   yarn add typescript ts-loader --dev &#x2F;&#x2F; 编译用 yarn add">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue-第一节">
+<meta property="og:url" content="http://yoursite.com/2020/04/17/vue/%E6%A0%B8%E5%BF%83%E5%BA%93/%E7%AC%AC%E4%B8%80%E8%8A%82/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="这是 vue 的第一节课程, 我们来看看它的配置文件  改造 vue_cli3+ 的 js 版本支持 ts 生成vue项目的vue_cli版本为 4.0.5  应用场景:   * 目前已经在开发的项目, 后续想要摸摸 ts  * 刚开始学习 ts, 不敢完全入坑  安装 1 2 3 4 5   yarn add typescript ts-loader --dev &#x2F;&#x2F; 编译用 yarn add">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-04-17T01:54:59.000Z">
+<meta property="article:modified_time" content="2020-04-17T03:07:57.540Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="vue">
+<meta property="article:tag" content="核心库">
+<meta property="article:tag" content="配置文件">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+<script src="/js/jquery-3.1.1.min.js"></script>
+
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/fashion.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+
+
+<header id="allheader" class="site-header" role="banner" 
+   >
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="Hexo" rel="home"> Hexo </a>
+            
+          </h1>
+          
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+
+            <div class="clearfix sf-menu">
+              <ul id="main-nav" class="menu sf-js-enabled sf-arrows"  style="touch-action: pan-y;">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">Tags</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-vue/核心库/第一节" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      vue-第一节
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2020/04/17/vue/%E6%A0%B8%E5%BF%83%E5%BA%93/%E7%AC%AC%E4%B8%80%E8%8A%82/" class="article-date">
+	  <time datetime="2020-04-17T01:54:59.000Z" itemprop="datePublished">April 17, 2020</time>
+	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/vue/">vue</a>, <a class="article-category-link" href="/categories/vue/%E6%A0%B8%E5%BF%83%E5%BA%93/">核心库</a>
+ 
+      
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这是 <code>vue</code> 的第一节课程, 我们来看看它的配置文件</p>
+<h2 id="改造-vue-cli3-的-js-版本支持-ts"><a href="#改造-vue-cli3-的-js-版本支持-ts" class="headerlink" title="改造 vue_cli3+ 的 js 版本支持 ts"></a>改造 <code>vue_cli3+</code> 的 <code>js</code> 版本支持 <code>ts</code></h2><p>生成<code>vue</code>项目的<code>vue_cli</code>版本为 <code>4.0.5</code></p>
+<p>应用场景:</p>
+<ul>
+<li>目前已经在开发的项目, 后续想要摸摸 <code>ts</code></li>
+<li>刚开始学习 <code>ts</code>, 不敢完全入坑</li>
+</ul>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">yarn add typescript ts-loader --dev &#x2F;&#x2F; 编译用</span><br><span class="line">yarn add vue-property-decorator &#x2F;&#x2F; 写vue组件时用</span><br><span class="line">yarn add fork-ts-checker-webpack-plugin --dev &#x2F;&#x2F; typescript 类型检查的webpack插件</span><br><span class="line">yarn add @types&#x2F;webpack-env &#x2F;&#x2F; 包含webpack的类型定义(在tsconfig.json中定义types用,目前没有测试出有什么影响)</span><br><span class="line">yarn add @typescript-eslint&#x2F;parser --dev &#x2F;&#x2F; eslint中的parse依赖r</span><br></pre></td></tr></table></figure>
+
+<h2 id="书写-vue-config-js-修改-webpack-的-loader"><a href="#书写-vue-config-js-修改-webpack-的-loader" class="headerlink" title="书写 vue.config.js 修改 webpack 的 loader"></a>书写 <code>vue.config.js</code> 修改 <code>webpack</code> 的 <code>loader</code></h2><p><code>vue.config.js</code> 必须是 <code>js</code> 文件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">"path"</span>);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">resolve</span>(<span class="params">dir</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> path.join(__dirname, dir);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> ForkTsCheckerWebpackPlugin = <span class="built_in">require</span>(<span class="string">'fork-ts-checker-webpack-plugin'</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">	<span class="comment">// lintOnSave: process.env.NODE_ENV === "development",</span></span><br><span class="line">	lintOnSave: <span class="literal">true</span>,</span><br><span class="line">	configureWebpack: &#123;</span><br><span class="line">		resolve: &#123;</span><br><span class="line">		  extensions: [<span class="string">'.tsx'</span>,<span class="string">'.ts'</span>, <span class="string">'.mjs'</span>, <span class="string">'.js'</span>, <span class="string">'.jsx'</span>, <span class="string">'.vue'</span>, <span class="string">'.json'</span>, <span class="string">'.wasm'</span>]</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,</span><br><span class="line">	chainWebpack: <span class="function"><span class="params">config</span> =&gt;</span> &#123;</span><br><span class="line">		<span class="comment">// 处理ts文件 (新增loader)</span></span><br><span class="line">		config.module</span><br><span class="line">			.rule(<span class="string">'ts'</span>)</span><br><span class="line">			.test(<span class="regexp">/\.tsx?$/</span>)</span><br><span class="line">			.exclude</span><br><span class="line">				.add(resolve(<span class="string">'node_modules'</span>))</span><br><span class="line">				.end()</span><br><span class="line">			.use(<span class="string">'cache-loader'</span>)</span><br><span class="line">				.loader(<span class="string">'cache-loader'</span>)</span><br><span class="line">				.options(&#123;</span><br><span class="line">					cacheDirectory: resolve(<span class="string">'node_modules/.cache/ts-loader'</span>)</span><br><span class="line">				&#125;)</span><br><span class="line">				.end()</span><br><span class="line">			.use(<span class="string">'babel-loader'</span>)</span><br><span class="line">				.loader(<span class="string">'babel-loader'</span>)</span><br><span class="line">				.end()</span><br><span class="line">			.use(<span class="string">'ts-loader'</span>)</span><br><span class="line">				.loader(<span class="string">'ts-loader'</span>)</span><br><span class="line">				.options(&#123;</span><br><span class="line">					transpileOnly: <span class="literal">true</span>, <span class="comment">// 关闭类型检查，即只进行转译(类型检查交给webpack插件(fork-ts-checker-webpack-plugin)在另一个进程中进行,这就是所谓的多进程方案,如果设置transpileOnly为false, 则编译和类型检查全部由ts-loader来做, 这就是单进程方案.显然多进程方案速度更快)</span></span><br><span class="line">					appendTsSuffixTo: [<span class="string">'\\.vue$'</span>],</span><br><span class="line">					happyPackMode: <span class="literal">false</span></span><br><span class="line">				&#125;)</span><br><span class="line">				.end()</span><br><span class="line">		</span><br><span class="line">		<span class="comment">// eslint 自动修复 (修改已经存在的loader)</span></span><br><span class="line">		config.module</span><br><span class="line">			.rule(<span class="string">'eslint'</span>)</span><br><span class="line">			.test(<span class="regexp">/\.(vue|(j|t)sx?)$/</span>)</span><br><span class="line">			.pre() <span class="comment">// eslint是pre处理的</span></span><br><span class="line">			.use(<span class="string">'eslint-loader'</span>)</span><br><span class="line">				.loader(<span class="string">'eslint-loader'</span>)</span><br><span class="line">				.tap(<span class="function"><span class="params">options</span> =&gt;</span> &#123; <span class="comment">// 修改已经存在loader的配置</span></span><br><span class="line">					options.fix = <span class="literal">true</span></span><br><span class="line">					<span class="keyword">return</span> options</span><br><span class="line">				&#125;)</span><br><span class="line">				.end()</span><br><span class="line">		</span><br><span class="line">		<span class="comment">// 使用webpack 插件进行typescript 的类型检查 fork-ts-checker-webpack-plugin</span></span><br><span class="line">		config</span><br><span class="line">			.plugin(<span class="string">'fork-ts-checker'</span>)</span><br><span class="line">			.use(ForkTsCheckerWebpackPlugin, [&#123;</span><br><span class="line">				vue: <span class="literal">true</span>,</span><br><span class="line">				tslint: <span class="literal">false</span>,</span><br><span class="line">				formatter: <span class="string">'codeframe'</span>,</span><br><span class="line">				checkSyntacticErrors: <span class="literal">false</span>,</span><br><span class="line">				<span class="comment">// 因为fork-ts-checker-webpack-plugin是在单独的进程跑的，所以它的错误或警告信息是异步回传给到webpack进程的, 这时编译报错信息只在终端显示,不会在预览的浏览器界面显示报错信息。</span></span><br><span class="line">				<span class="comment">// 将async设置为false后，就要求webpack等待fork-ts-checker-webpack-plugin进程返回信息, 这样会在页面显示编译报错信息。不过这样做也可能会拖慢整个webpack的转译等待时间。</span></span><br><span class="line">				<span class="comment">// async: false </span></span><br><span class="line">			&#125;])</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="项目根目录下新建-tsconfig-json-文件"><a href="#项目根目录下新建-tsconfig-json-文件" class="headerlink" title="项目根目录下新建 tsconfig.json 文件"></a>项目根目录下新建 <code>tsconfig.json</code> 文件</h2><p>配置编译 <code>ts</code> 文件规则.我们默认使用了<code>vue-cli</code> 生成项目时选择 <code>typescript</code> 版本时的 <code>tsconfig.json</code></p>
+<ul>
+<li><p>自定义新增了 <code>&quot;noImplicitAny&quot;: false</code>, </p>
+</li>
+<li><p><code>strictPropertyInitialization</code> 这个配置是要求定义类的属性时必须初始化赋值,在<code>&quot;strict&quot;: true</code> 时自动设置为 <code>true</code>,这非常不合理,因为我们在 <code>vue</code> 中属性的值经常在 <code>created/mounted</code> 赋值, 因此设置为 <code>&quot;strictPropertyInitialization&quot;: false</code>.</p>
+</li>
+<li><p><code>strictNullChecks</code> 这个配置是严格的 <code>null</code> 检查模式. 在<code>&quot;strictNullChecks&quot;: true</code>模式下(<code>&quot;strict&quot;: true</code> 时自动设置为 <code>true</code>), <code>null</code> 和 <code>undefined</code> 值不包含在任何类型里, 但是我们在 <code>vue</code> 的 <code>data</code> 里面初始化变量时,经常会初始化为 <code>null</code>, 因此我们将此配置设置为 <code>false</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; strictNullChecks:true时下面一行会报错</span><br><span class="line">let str: string &#x3D; null</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>上述连个配置均为 <code>strict: true</code>配置导致的, 如果你想简单可以将其注释掉, 因为 <code>strict</code> 默认为 <code>false</code>, 上述两个配置默认也是 <code>false</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">strict: true &#x2F;&#x2F;启用所有严格类型检查选项。</span><br><span class="line">&#x2F;&#x2F; 启用 --strict相当于启用 --noImplicitAny, --noImplicitThis, --alwaysStrict， --strictNullChecks和 --strictFunctionTypes和--strictPropertyInitialization。</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>最终 <code>tsconfig.json</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;compilerOptions&quot;: &#123;</span><br><span class="line">    &quot;target&quot;: &quot;esnext&quot;,</span><br><span class="line">    &quot;module&quot;: &quot;esnext&quot;,</span><br><span class="line">    &quot;strict&quot;: true,</span><br><span class="line">		&quot;strictPropertyInitialization&quot;: false,</span><br><span class="line">		&quot;strictNullChecks&quot;: false,</span><br><span class="line">    &quot;jsx&quot;: &quot;preserve&quot;,</span><br><span class="line">		&quot;noImplicitAny&quot;: false,</span><br><span class="line">    &quot;importHelpers&quot;: true,</span><br><span class="line">    &quot;moduleResolution&quot;: &quot;node&quot;,</span><br><span class="line">    &quot;experimentalDecorators&quot;: true,</span><br><span class="line">    &quot;esModuleInterop&quot;: true,</span><br><span class="line">    &quot;allowSyntheticDefaultImports&quot;: true,</span><br><span class="line">    &quot;sourceMap&quot;: true,</span><br><span class="line">    &quot;baseUrl&quot;: &quot;.&quot;,</span><br><span class="line">    &quot;types&quot;: [</span><br><span class="line">      &quot;webpack-env&quot;,</span><br><span class="line">      &quot;jest&quot;</span><br><span class="line">    ],</span><br><span class="line">    &quot;paths&quot;: &#123;</span><br><span class="line">      &quot;@&#x2F;*&quot;: [</span><br><span class="line">        &quot;src&#x2F;*&quot;</span><br><span class="line">      ]</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;lib&quot;: [</span><br><span class="line">      &quot;esnext&quot;,</span><br><span class="line">      &quot;dom&quot;,</span><br><span class="line">      &quot;dom.iterable&quot;,</span><br><span class="line">      &quot;scripthost&quot;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;include&quot;: [</span><br><span class="line">    &quot;src&#x2F;**&#x2F;*.ts&quot;,</span><br><span class="line">    &quot;src&#x2F;**&#x2F;*.tsx&quot;,</span><br><span class="line">    &quot;src&#x2F;**&#x2F;*.vue&quot;,</span><br><span class="line">    &quot;tests&#x2F;**&#x2F;*.ts&quot;,</span><br><span class="line">    &quot;tests&#x2F;**&#x2F;*.tsx&quot;</span><br><span class="line">  ],</span><br><span class="line">  &quot;exclude&quot;: [</span><br><span class="line">    &quot;node_modules&quot;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其他版本的 <code>tsconfig.json</code>, 重点在 <code>paths</code> 和 <code>types</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;compilerOptions&quot;: &#123;</span><br><span class="line">    &quot;target&quot;: &quot;esnext&quot;, &#x2F;&#x2F; 编译目标语法, 可以写es5, 但是我们项目的ts-loader前经过了babel-loader</span><br><span class="line">    &quot;module&quot;: &quot;esnext&quot;, &#x2F;&#x2F; </span><br><span class="line">    &quot;strict&quot;: true,</span><br><span class="line">		&quot;strictPropertyInitialization&quot;: false, &#x2F;&#x2F; strict为true时,默认为true</span><br><span class="line">		&quot;strictNullChecks&quot;: false, &#x2F;&#x2F; 设置null为其他类型的子类型, 效果:变量或者属性可以初始化为null</span><br><span class="line">    &quot;jsx&quot;: &quot;preserve&quot;,</span><br><span class="line">		&quot;noImplicitAny&quot;: false, &#x2F;&#x2F; false表示运行隐式的any类型,也就是允许不设置任何类型, 这个设置运行js文件直接改成ts文件</span><br><span class="line">    &quot;importHelpers&quot;: true,</span><br><span class="line">    &quot;moduleResolution&quot;: &quot;node&quot;, &#x2F;&#x2F; 和nodejs一样的node_modules机制</span><br><span class="line">    &quot;experimentalDecorators&quot;: true,</span><br><span class="line">    &quot;esModuleInterop&quot;: true,</span><br><span class="line">    &quot;allowSyntheticDefaultImports&quot;: true,</span><br><span class="line">    &quot;sourceMap&quot;: true,</span><br><span class="line">    &quot;baseUrl&quot;: &quot;.&quot;,</span><br><span class="line">    &quot;paths&quot;: &#123; &#x2F;&#x2F; 配合baseUrl, ts文件中import 模块路径的解析规则</span><br><span class="line">      &quot;@&#x2F;*&quot;: [</span><br><span class="line">        &quot;src&#x2F;*&quot;,</span><br><span class="line">        &quot;src&#x2F;types&#x2F;*&quot;</span><br><span class="line">      ],</span><br><span class="line">      &quot;*&quot;:[</span><br><span class="line">        &quot;node_modules&#x2F;*&quot;,</span><br><span class="line">        &quot;src&#x2F;types&#x2F;*&quot;</span><br><span class="line">      ]</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;lib&quot;: [</span><br><span class="line">      &quot;esnext&quot;,</span><br><span class="line">      &quot;dom&quot;,</span><br><span class="line">      &quot;dom.iterable&quot;,</span><br><span class="line">      &quot;scripthost&quot;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;include&quot;: [</span><br><span class="line">    &quot;src&#x2F;**&#x2F;*.ts&quot;,</span><br><span class="line">    &quot;src&#x2F;**&#x2F;*.tsx&quot;,</span><br><span class="line">    &quot;src&#x2F;**&#x2F;*.vue&quot;,</span><br><span class="line">    &quot;tests&#x2F;**&#x2F;*.ts&quot;,</span><br><span class="line">    &quot;tests&#x2F;**&#x2F;*.tsx&quot;</span><br><span class="line">  ],</span><br><span class="line">  &quot;exclude&quot;: [</span><br><span class="line">    &quot;node_modules&quot;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以上两个版本主要是 <code>paths</code> 和 <code>types</code> 不同, 你需要了解他们的作用,并在工作中设置合适的值.<br>第二种的其他版本运行把所有的 <code>.d.ts</code> 文件放到 <code>src/types</code> 文件夹内.</p>
+<h2 id="在-src-文件下新建一个-ts-文件"><a href="#在-src-文件下新建一个-ts-文件" class="headerlink" title="在 src 文件下新建一个 ts 文件"></a>在 <code>src</code> 文件下新建一个 <code>ts</code> 文件</h2><p>在 <code>src</code> 下新建 <code>shims-vue.d.ts</code> 文件, 否则会报错如下: </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ERROR</span><br><span class="line">      TS18003: No inputs were found in config file &#39;tsconfig.json&#39;. Specified &#39;include&#39; paths were &#39;[&quot;src&#x2F;**&#x2F;*.ts&quot;,&quot;src&#x2F;**&#x2F;*.tsx&quot;,&quot;src&#x2F;**&#x2F;*.vue&quot;,&quot;tests&#x2F;**&#x2F;*.ts&quot;,&quot;tests&#x2F;**&#x2F;*.tsx&quot;]&#39; and &#39;exclude&#39; paths were &#39;[&quot;node_modules&quot;]&#39;.</span><br></pre></td></tr></table></figure>
+
+<p><code>vueCli3</code> 的 <code>typescript</code> 版本有 <code>shims-vue.d.ts</code>和 <code>shims-tsx.d.ts</code> 这两个文件,我们不妨把他们放到 <code>src</code> 下.</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// shim-vue.d.ts</span></span><br><span class="line"><span class="keyword">declare</span> <span class="keyword">module</span> '*.vue' &#123;</span><br><span class="line">  <span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">default</span> Vue</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// shims-tsx.d.ts</span></span><br><span class="line"><span class="keyword">import</span> Vue, &#123; VNode &#125; <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">declare</span> global &#123;</span><br><span class="line">  <span class="keyword">namespace</span> JSX &#123;</span><br><span class="line">    <span class="comment">// tslint:disable no-empty-interface</span></span><br><span class="line">    <span class="keyword">interface</span> Element <span class="keyword">extends</span> VNode &#123;&#125;</span><br><span class="line">    <span class="comment">// tslint:disable no-empty-interface</span></span><br><span class="line">    <span class="keyword">interface</span> ElementClass <span class="keyword">extends</span> Vue &#123;&#125;</span><br><span class="line">    <span class="keyword">interface</span> IntrinsicElements &#123;</span><br><span class="line">      [elem: <span class="built_in">string</span>]: <span class="built_in">any</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以上文件的原理,详见 <code>typescript</code>的 <code>module-augmentation</code>(模块补充: 可以通过路径在文件中增补类型定义)</p>
+<ul>
+<li><a href="https://www.typescriptlang.org/docs/handbook/declaration-merging.html#module-augmentation" target="_blank" rel="noopener">typescript关于模块补充的手册</a></li>
+<li><a href="https://cn.vuejs.org/v2/guide/typescript.html#%E5%A2%9E%E5%BC%BA%E7%B1%BB%E5%9E%8B%E4%BB%A5%E9%85%8D%E5%90%88%E6%8F%92%E4%BB%B6%E4%BD%BF%E7%94%A8" target="_blank" rel="noopener">vue增强类型以配合插件使用</a></li>
+</ul>
+<h2 id="增加-eslint-规则"><a href="#增加-eslint-规则" class="headerlink" title="增加 eslint 规则"></a>增加 <code>eslint</code> 规则</h2><p>解决使用 <code>ts</code> 内置类型时保报错 ,例如 <code>Partial</code>.<br>安装(第一步已经安装)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add @typescript-eslint&#x2F;parser --dev</span><br></pre></td></tr></table></figure>
+
+<p>配置 <code>.eslintrc.js</code> 文件的 <code>parser</code> 项为 <code>@typescript-eslint/parser</code></p>
+<ul>
+<li>在 <code>vue-cli(js版)</code> 生成的 <code>.eslintrc.js</code> 中简单修改</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  root: <span class="literal">true</span>,</span><br><span class="line">  env: &#123;</span><br><span class="line">    node: <span class="literal">true</span>,</span><br><span class="line">		browser: <span class="literal">true</span>,</span><br><span class="line">		es6: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">'extends'</span>: [</span><br><span class="line">    <span class="string">'plugin:vue/essential'</span>,</span><br><span class="line">    <span class="string">'eslint:recommended'</span>,</span><br><span class="line">    <span class="string">'@vue/prettier'</span></span><br><span class="line">  ],</span><br><span class="line">  parserOptions: &#123;</span><br><span class="line">    <span class="comment">// parser: 'babel-eslint',</span></span><br><span class="line">		parser: <span class="string">'@typescript-eslint/parser'</span>, <span class="comment">// 解析ts文件, 例如识别ts文件的内置类型</span></span><br><span class="line">		ecmaFeatures: &#123;</span><br><span class="line">		  legacyDecorators: <span class="literal">true</span></span><br><span class="line">		&#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  rules: &#123;</span><br><span class="line">    <span class="string">'no-console'</span>: process.env.NODE_ENV === <span class="string">'production'</span> ? <span class="string">'error'</span> : <span class="string">'off'</span>,</span><br><span class="line">    <span class="string">'no-debugger'</span>: process.env.NODE_ENV === <span class="string">'production'</span> ? <span class="string">'error'</span> : <span class="string">'off'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  overrides: [</span><br><span class="line">    &#123;</span><br><span class="line">      files: [</span><br><span class="line">        <span class="string">'**/__tests__/*.&#123;j,t&#125;s?(x)'</span>,</span><br><span class="line">        <span class="string">'**/tests/unit/**/*.spec.&#123;j,t&#125;s?(x)'</span></span><br><span class="line">      ],</span><br><span class="line">      env: &#123;</span><br><span class="line">        jest: <span class="literal">true</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在上述 <code>.eslintrc.js</code> 的配置中, 默认是使用双引号和分号结尾的, 当我在 <code>rules</code>中修改时,会和 <code>prettier</code> 的配置冲突, 因此在根目录下新建 <code>.prettierrc.js</code> 文件,书写</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123; </span><br><span class="line">	<span class="string">"printWidth"</span>: <span class="number">80</span>, <span class="comment">// 每行代码长度（默认80）</span></span><br><span class="line">	<span class="string">"tabWidth"</span>: <span class="number">2</span>, <span class="comment">// 每个tab相当于多少个空格（默认2）</span></span><br><span class="line">	<span class="string">"useTabs"</span>: <span class="literal">false</span>, <span class="comment">// 是否使用tab进行缩进（默认false）</span></span><br><span class="line">	<span class="string">"singleQuote"</span>: <span class="literal">true</span>, <span class="comment">// 使用单引号（默认false）</span></span><br><span class="line">	<span class="string">"semi"</span>: <span class="literal">false</span>, <span class="comment">// 声明结尾使用分号(默认true)</span></span><br><span class="line">	<span class="string">"trailingComma"</span>: <span class="string">"all"</span>, <span class="comment">// 多行使用拖尾逗号（默认none）</span></span><br><span class="line">	<span class="string">"bracketSpacing"</span>: <span class="literal">true</span>, <span class="comment">// 对象字面量的大括号间使用空格（默认true）</span></span><br><span class="line">	<span class="string">"jsxBracketSameLine"</span>: <span class="literal">false</span>, <span class="comment">// 多行JSX中的&gt;放置在最后一行的结尾，而不是另起一行（默认false）</span></span><br><span class="line">	<span class="string">"arrowParens"</span>: <span class="string">"avoid"</span> <span class="comment">// 只有一个参数的箭头函数的参数是否带圆括号（默认avoid）</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>其他版本</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  root: <span class="literal">true</span>,</span><br><span class="line">  parserOptions: &#123;</span><br><span class="line">	  <span class="comment">// +++++++++++</span></span><br><span class="line">    parser: <span class="string">'@typescript-eslint/parser'</span>,</span><br><span class="line">    sourceType: <span class="string">'module'</span>,</span><br><span class="line">    ecmaFeatures: &#123;</span><br><span class="line">      legacyDecorators: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  env: &#123;</span><br><span class="line">    browser: <span class="literal">true</span>,</span><br><span class="line">    node: <span class="literal">true</span>,</span><br><span class="line">    es6: <span class="literal">true</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// plugin：包名/配置名称</span></span><br><span class="line">  extends: [<span class="string">'plugin:vue/recommended'</span>, <span class="string">'eslint:recommended'</span>],</span><br><span class="line"></span><br><span class="line">  <span class="comment">// add your custom rules here</span></span><br><span class="line">  <span class="comment">//it is base on https://github.com/vuejs/eslint-config-vue</span></span><br><span class="line">  rules: &#123;</span><br><span class="line">    <span class="string">"vue/max-attributes-per-line"</span>: [<span class="number">2</span>, &#123;</span><br><span class="line">      <span class="string">"singleline"</span>: <span class="number">10</span>,</span><br><span class="line">      <span class="string">"multiline"</span>: &#123;</span><br><span class="line">        <span class="string">"max"</span>: <span class="number">1</span>,</span><br><span class="line">        <span class="string">"allowFirstLine"</span>: <span class="literal">false</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;],</span><br><span class="line">    <span class="string">"vue/singleline-html-element-content-newline"</span>: <span class="string">"off"</span>,</span><br><span class="line">    <span class="string">"vue/multiline-html-element-content-newline"</span>:<span class="string">"off"</span>,</span><br><span class="line">    <span class="string">"vue/name-property-casing"</span>: [<span class="string">"error"</span>, <span class="string">"PascalCase"</span>],</span><br><span class="line">    <span class="string">"vue/no-v-html"</span>: <span class="string">"off"</span>,</span><br><span class="line">    <span class="string">'accessor-pairs'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'arrow-spacing'</span>: [<span class="number">2</span>, &#123;</span><br><span class="line">      <span class="string">'before'</span>: <span class="literal">true</span>,</span><br><span class="line">      <span class="string">'after'</span>: <span class="literal">true</span></span><br><span class="line">    &#125;],</span><br><span class="line">    <span class="string">'block-spacing'</span>: [<span class="number">2</span>, <span class="string">'always'</span>],</span><br><span class="line">    <span class="string">'brace-style'</span>: [<span class="number">2</span>, <span class="string">'1tbs'</span>, &#123;</span><br><span class="line">      <span class="string">'allowSingleLine'</span>: <span class="literal">true</span></span><br><span class="line">    &#125;],</span><br><span class="line">    <span class="string">'camelcase'</span>: [<span class="number">0</span>, &#123;</span><br><span class="line">      <span class="string">'properties'</span>: <span class="string">'always'</span></span><br><span class="line">    &#125;],</span><br><span class="line">    <span class="string">'comma-dangle'</span>: [<span class="number">2</span>, <span class="string">'never'</span>],</span><br><span class="line">    <span class="string">'comma-spacing'</span>: [<span class="number">2</span>, &#123;</span><br><span class="line">      <span class="string">'before'</span>: <span class="literal">false</span>,</span><br><span class="line">      <span class="string">'after'</span>: <span class="literal">true</span></span><br><span class="line">    &#125;],</span><br><span class="line">    <span class="string">'comma-style'</span>: [<span class="number">2</span>, <span class="string">'last'</span>],</span><br><span class="line">    <span class="string">'constructor-super'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'curly'</span>: [<span class="number">2</span>, <span class="string">'multi-line'</span>],</span><br><span class="line">    <span class="string">'dot-location'</span>: [<span class="number">2</span>, <span class="string">'property'</span>],</span><br><span class="line">    <span class="string">'eol-last'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'eqeqeq'</span>: [<span class="string">"error"</span>, <span class="string">"always"</span>, &#123;<span class="string">"null"</span>: <span class="string">"ignore"</span>&#125;],</span><br><span class="line">    <span class="string">'generator-star-spacing'</span>: [<span class="number">2</span>, &#123;</span><br><span class="line">      <span class="string">'before'</span>: <span class="literal">true</span>,</span><br><span class="line">      <span class="string">'after'</span>: <span class="literal">true</span></span><br><span class="line">    &#125;],</span><br><span class="line">    <span class="string">'handle-callback-err'</span>: [<span class="number">2</span>, <span class="string">'^(err|error)$'</span>],</span><br><span class="line">    <span class="string">'indent'</span>: [<span class="number">2</span>, <span class="number">2</span>, &#123;</span><br><span class="line">      <span class="string">'SwitchCase'</span>: <span class="number">1</span></span><br><span class="line">    &#125;],</span><br><span class="line">    <span class="string">'jsx-quotes'</span>: [<span class="number">2</span>, <span class="string">'prefer-single'</span>],</span><br><span class="line">    <span class="string">'key-spacing'</span>: [<span class="number">2</span>, &#123;</span><br><span class="line">      <span class="string">'beforeColon'</span>: <span class="literal">false</span>,</span><br><span class="line">      <span class="string">'afterColon'</span>: <span class="literal">true</span></span><br><span class="line">    &#125;],</span><br><span class="line">    <span class="string">'keyword-spacing'</span>: [<span class="number">2</span>, &#123;</span><br><span class="line">      <span class="string">'before'</span>: <span class="literal">true</span>,</span><br><span class="line">      <span class="string">'after'</span>: <span class="literal">true</span></span><br><span class="line">    &#125;],</span><br><span class="line">    <span class="string">'new-cap'</span>: [<span class="number">2</span>, &#123;</span><br><span class="line">      <span class="string">'newIsCap'</span>: <span class="literal">true</span>,</span><br><span class="line">      <span class="string">'capIsNew'</span>: <span class="literal">false</span></span><br><span class="line">    &#125;],</span><br><span class="line">    <span class="string">'new-parens'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'no-array-constructor'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'no-caller'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'no-console'</span>: <span class="string">'off'</span>,</span><br><span class="line">    <span class="string">'no-class-assign'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'no-cond-assign'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'no-const-assign'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'no-control-regex'</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="string">'no-delete-var'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'no-dupe-args'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'no-dupe-class-members'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'no-dupe-keys'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'no-duplicate-case'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'no-empty-character-class'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'no-empty-pattern'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'no-eval'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'no-ex-assign'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'no-extend-native'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'no-extra-bind'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'no-extra-boolean-cast'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'no-extra-parens'</span>: [<span class="number">2</span>, <span class="string">'functions'</span>],</span><br><span class="line">    <span class="string">'no-fallthrough'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'no-floating-decimal'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'no-func-assign'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'no-implied-eval'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'no-inner-declarations'</span>: [<span class="number">2</span>, <span class="string">'functions'</span>],</span><br><span class="line">    <span class="string">'no-invalid-regexp'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'no-irregular-whitespace'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'no-iterator'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'no-label-var'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'no-labels'</span>: [<span class="number">2</span>, &#123;</span><br><span class="line">      <span class="string">'allowLoop'</span>: <span class="literal">false</span>,</span><br><span class="line">      <span class="string">'allowSwitch'</span>: <span class="literal">false</span></span><br><span class="line">    &#125;],</span><br><span class="line">    <span class="string">'no-lone-blocks'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'no-mixed-spaces-and-tabs'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'no-multi-spaces'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'no-multi-str'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'no-multiple-empty-lines'</span>: [<span class="number">2</span>, &#123;</span><br><span class="line">      <span class="string">'max'</span>: <span class="number">1</span></span><br><span class="line">    &#125;],</span><br><span class="line">    <span class="string">'no-native-reassign'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'no-negated-in-lhs'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'no-new-object'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'no-new-require'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'no-new-symbol'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'no-new-wrappers'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'no-obj-calls'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'no-octal'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'no-octal-escape'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'no-path-concat'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'no-proto'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'no-redeclare'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'no-regex-spaces'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'no-return-assign'</span>: [<span class="number">2</span>, <span class="string">'except-parens'</span>],</span><br><span class="line">    <span class="string">'no-self-assign'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'no-self-compare'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'no-sequences'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'no-shadow-restricted-names'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'no-spaced-func'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'no-sparse-arrays'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'no-this-before-super'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'no-throw-literal'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'no-trailing-spaces'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'no-undef'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'no-undef-init'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'no-unexpected-multiline'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'no-unmodified-loop-condition'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'no-unneeded-ternary'</span>: [<span class="number">2</span>, &#123;</span><br><span class="line">      <span class="string">'defaultAssignment'</span>: <span class="literal">false</span></span><br><span class="line">    &#125;],</span><br><span class="line">    <span class="string">'no-unreachable'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'no-unsafe-finally'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'no-unused-vars'</span>: [<span class="number">2</span>, &#123;</span><br><span class="line">      <span class="string">'vars'</span>: <span class="string">'all'</span>,</span><br><span class="line">      <span class="string">'args'</span>: <span class="string">'none'</span></span><br><span class="line">    &#125;],</span><br><span class="line">    <span class="string">'no-useless-call'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'no-useless-computed-key'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'no-useless-constructor'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'no-useless-escape'</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="string">'no-whitespace-before-property'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'no-with'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'one-var'</span>: [<span class="number">2</span>, &#123;</span><br><span class="line">      <span class="string">'initialized'</span>: <span class="string">'never'</span></span><br><span class="line">    &#125;],</span><br><span class="line">    <span class="string">'operator-linebreak'</span>: [<span class="number">2</span>, <span class="string">'after'</span>, &#123;</span><br><span class="line">      <span class="string">'overrides'</span>: &#123;</span><br><span class="line">        <span class="string">'?'</span>: <span class="string">'before'</span>,</span><br><span class="line">        <span class="string">':'</span>: <span class="string">'before'</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;],</span><br><span class="line">    <span class="string">'padded-blocks'</span>: [<span class="number">2</span>, <span class="string">'never'</span>],</span><br><span class="line">    <span class="string">'quotes'</span>: [<span class="number">2</span>, <span class="string">'single'</span>, &#123;</span><br><span class="line">      <span class="string">'avoidEscape'</span>: <span class="literal">true</span>,</span><br><span class="line">      <span class="string">'allowTemplateLiterals'</span>: <span class="literal">true</span></span><br><span class="line">    &#125;],</span><br><span class="line">    <span class="string">'semi'</span>: [<span class="number">2</span>, <span class="string">'never'</span>],</span><br><span class="line">    <span class="string">'semi-spacing'</span>: [<span class="number">2</span>, &#123;</span><br><span class="line">      <span class="string">'before'</span>: <span class="literal">false</span>,</span><br><span class="line">      <span class="string">'after'</span>: <span class="literal">true</span></span><br><span class="line">    &#125;],</span><br><span class="line">    <span class="string">'space-before-blocks'</span>: [<span class="number">2</span>, <span class="string">'always'</span>],</span><br><span class="line">    <span class="string">'space-before-function-paren'</span>: [<span class="number">2</span>, <span class="string">'never'</span>],</span><br><span class="line">    <span class="string">'space-in-parens'</span>: [<span class="number">2</span>, <span class="string">'never'</span>],</span><br><span class="line">    <span class="string">'space-infix-ops'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'space-unary-ops'</span>: [<span class="number">2</span>, &#123;</span><br><span class="line">      <span class="string">'words'</span>: <span class="literal">true</span>,</span><br><span class="line">      <span class="string">'nonwords'</span>: <span class="literal">false</span></span><br><span class="line">    &#125;],</span><br><span class="line">    <span class="string">'spaced-comment'</span>: [<span class="number">2</span>, <span class="string">'always'</span>, &#123;</span><br><span class="line">      <span class="string">'markers'</span>: [<span class="string">'global'</span>, <span class="string">'globals'</span>, <span class="string">'eslint'</span>, <span class="string">'eslint-disable'</span>, <span class="string">'*package'</span>, <span class="string">'!'</span>, <span class="string">','</span>]</span><br><span class="line">    &#125;],</span><br><span class="line">    <span class="string">'template-curly-spacing'</span>: [<span class="number">2</span>, <span class="string">'never'</span>],</span><br><span class="line">    <span class="string">'use-isnan'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'valid-typeof'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'wrap-iife'</span>: [<span class="number">2</span>, <span class="string">'any'</span>],</span><br><span class="line">    <span class="string">'yield-star-spacing'</span>: [<span class="number">2</span>, <span class="string">'both'</span>],</span><br><span class="line">    <span class="string">'yoda'</span>: [<span class="number">2</span>, <span class="string">'never'</span>],</span><br><span class="line">    <span class="string">'prefer-const'</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">'no-debugger'</span>: process.env.NODE_ENV === <span class="string">'production'</span> ? <span class="number">2</span> : <span class="number">0</span>,</span><br><span class="line">    <span class="string">'object-curly-spacing'</span>: [<span class="number">2</span>, <span class="string">'always'</span>, &#123;</span><br><span class="line">      objectsInObjects: <span class="literal">false</span></span><br><span class="line">    &#125;],</span><br><span class="line">    <span class="string">'array-bracket-spacing'</span>: [<span class="number">2</span>, <span class="string">'never'</span>]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="一个注意"><a href="#一个注意" class="headerlink" title="一个注意"></a>一个注意</h2><p>如果你写了如下代码, 会报一个错误:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">&lt;div&gt;&#123;&#123;message&#125;&#125;&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line">&lt;script lang&#x3D;&quot;ts&quot;&gt;</span><br><span class="line">import &#123; Vue, Component &#125; from &quot;vue-property-decorator&quot;</span><br><span class="line">@Component</span><br><span class="line">export default class TestTs extends Vue &#123;</span><br><span class="line">  message: string &#x3D; &quot;hello ts!&quot;;</span><br><span class="line">  mounted() &#123;</span><br><span class="line">    setTimeout(()&#x3D;&gt;&#123;</span><br><span class="line">      this.message &#x3D; &quot;hello typeScript!&quot;</span><br><span class="line">    &#125;,2000)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<p>错误如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">error  Parsing error: Using the export keyword between a decorator and a class is not allowed. Please use &#96;export @dec class&#96; instead.</span><br></pre></td></tr></table></figure>
+
+<p>解决方法: 修改<code>eslintrc.js</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">parserOptions: &#123;</span><br><span class="line">    ecmaFeatures: &#123;</span><br><span class="line">      legacyDecorators: true</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+
+<h2 id="vue-property-decorator-的使用"><a href="#vue-property-decorator-的使用" class="headerlink" title="vue-property-decorator 的使用"></a><code>vue-property-decorator</code> 的使用</h2><p><a href="https://www.npmjs.com/package/vue-property-decorator" target="_blank" rel="noopener">vue-property-decorator</a></p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/vue/">vue</a>, <a class="article-category-link" href="/categories/vue/%E6%A0%B8%E5%BF%83%E5%BA%93/">核心库</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A0%B8%E5%BF%83%E5%BA%93/" rel="tag">核心库</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/" rel="tag">配置文件</a></li></ul>
+
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/04/17/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#改造-vue-cli3-的-js-版本支持-ts"><span class="nav-number">1.</span> <span class="nav-text">改造 vue_cli3+ 的 js 版本支持 ts</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#书写-vue-config-js-修改-webpack-的-loader"><span class="nav-number">3.</span> <span class="nav-text">书写 vue.config.js 修改 webpack 的 loader</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目根目录下新建-tsconfig-json-文件"><span class="nav-number">4.</span> <span class="nav-text">项目根目录下新建 tsconfig.json 文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在-src-文件下新建一个-ts-文件"><span class="nav-number">5.</span> <span class="nav-text">在 src 文件下新建一个 ts 文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#增加-eslint-规则"><span class="nav-number">6.</span> <span class="nav-text">增加 eslint 规则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一个注意"><span class="nav-number">7.</span> <span class="nav-text">一个注意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vue-property-decorator-的使用"><span class="nav-number">8.</span> <span class="nav-text">vue-property-decorator 的使用</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2020 Hexo All Rights Reserved.
+        
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hipaper" target="_blank">hipaper</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
+    
+    
+</script>
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/bootstrap.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+	// <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>
