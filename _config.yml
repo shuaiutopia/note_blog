@@ -99,7 +99,7 @@ theme: hipaper
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/shuaiutopia/note_blog.git
+  repo: https://ab9d6ab0f5511edb163ef4fa5015a658e0277042@github.com/shuaiutopia/note_blog.git
   token: ab9d6ab0f5511edb163ef4fa5015a658e0277042
   name: shuaiutopia
   email: sss0513.love@163.com
